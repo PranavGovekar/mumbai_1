@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Search</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style> -->
+</head>
+
+<body id="everything">
+        <h3 id="head" style="background-color:lightgrey; padding:10px; text-align:center; margin :auto">Vidyapeeth Vikas Manch<br>
+        Mumbai Vidyapeeth</h3>
+        <!-- <h4 id="head" style="background-color:lightgrey; padding:10px; text-align:center; margin :auto">Teacher Search</h4> -->
+    <!-- <h6 id="vote" style="background-color:lightgrey; padding:10px; text-align:center; margin :auto"><b>Vote for ABVP Candidates</b></h6>
+    <p id="names" style="background-color:lightgrey; padding:10px; text-align:center; margin :auto; font-size:15px;"><b>
+        Fadnavis Prasenjeet Shrikrishna (Open)<br>
+        Santosh Nanasaheb Dhore (Open)<br>
+        Dadabhau Bhikaji Shinalkar (Open)<br>
+        Yuvraj Madhavrao Narawade (Open)<br>
+        Sagar Anil Vaidya (Open)<br>
+        <br>
+        Bageshri Milind Manthalkar (Ladies)<br>
+        Rahul Shivaji Pakhare (SC)<br>
+        Ganapat Popat Nangare (ST)<br>
+        Vijay Nivrutti Sonawane (NT)<br>
+        Sachin Shivaji Gorde (OBC)<br>
+    </b></p> --><br>
+    <form id="form1" name="myform" style="width:80%; margin: auto;" onsubmit="search_name();return false;">
+        <div class="mb-3" style="padding:10px">
+            <input name="name" style="border-radius:20px; margin:auto;" type="text" class="form-control" id="name"
+                placeholder="Name" aria-describedby="emailHelp">
+        </div>
+        <button style="display:block; margin:auto;" type="submit" class="btn btn-primary">Search Name</button>
+        <h1 id="res"></h1>
+    </form>
+    <br>
+    <form id="form2" name="myform1" style="width:80%; margin: auto;" onsubmit="search_address();return false;">
+    <div class="mb-3" style="padding:10px">
+        <input name="address" style="border-radius:20px; margin:auto;" type="text" class="form-control" id="address"
+            placeholder="Address" aria-describedby="emailHelp">
+    </div>
+    <button style="display:block; margin:auto;" type="submit" class="btn btn-primary">Search Address</button>
+    <h1 id="res"></h1>
+    <input style="display:block; margin:auto;" class="btn btn-primary" type="button" onclick="printDiv();return false;" value="Save"/>
+    </form>
+    <br>
+
+    <div id="table">
+        <table style="width: auto; margin: auto; text-align:center;" id="myTable"
+            class="table table-responsive table-borderless table-striped table-earning">
+            <thead>
+                <tr>
+                    <th>Sr No.</th>
+                    <th>Form No.</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Date of Birth</th>
+                    <th>Department</th>
+                </tr>
+            </thead>
+            <tbody id="testBody"></tbody>
+        </table>
+    </div>
+
+    <footer id="foot" style="margin: auto; padding:10px; text-align:center">
+        <b>Developed by : &#169 KMGovekar</b>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    
+        <script>
+            function loadScript(url) {
+                var head = document.getElementsByTagName('head')[0];
+                var script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.src = url;
+                head.appendChild(script);
+            }
+
+            loadScript('array.js');
+
+            var str = ""
+
+            function loadTableData(items) {
+                var Table = document.getElementById("testBody");
+                Table.innerHTML = "";
+                const table = document.getElementById("testBody");
+                items.forEach(item => {
+                    let row = table.insertRow();
+                    let sr = row.insertCell(0);
+                    sr.innerHTML = item.sr;
+                    let form = row.insertCell(1);
+                    form.innerHTML = item.form;
+                    let name = row.insertCell(2);
+                    name.innerHTML = item.name;
+                    let address = row.insertCell(3);
+                    address.innerHTML = item.address;
+                    let dob = row.insertCell(4);
+                    dob.innerHTML = item.dob;
+                    let dept = row.insertCell(5);
+                    dept.innerHTML = item.dept;
+                });
+                // let row = table.insertRow();
+                // let foot = row.insertCell(0);
+                // let foot1 = row.insertCell(1);
+                // foot1.innerHTML = "Keshav Govekar";
+            }
+
+            function search_name() {
+                var result = new Array();
+                var res = "";
+                str = document.getElementById("name").value;
+                var items = new Array();
+
+                if (str == "" || str.length == 1) {
+                    alert("Enter your name or address");
+                    document.myform.name.focus();
+                    return false;
+                }
+
+                const tokens = str.split(" ")
+                let num_tokens = tokens.length;
+
+                for (let i = 0; i < num_tokens; i++) {
+                    var re = new RegExp(tokens[i], 'gi');
+                    var temp_index = new Array();
+                    for (let i = 0; i < name.length; i++) {
+                        if (name[i].match(re) != null) {
+                            temp_index.push(i);
+                        }
+                    }
+                    result.push(temp_index);
+                }
+
+                index = result.reduce((a, b) => a.filter(c => b.includes(c)));
+
+                for (let i = 0; i < index.length; i++) {
+
+                    // console.log();
+                    // console.log(index[i] + 1)
+                    // console.log(name[index[i]]);
+                    // console.log(address[index[i]]);
+
+                    var item = new Object()
+
+                    item.sr = sr[index[i]]
+                    item.form = form[index[i]]
+                    item.name = name[index[i]]
+                    item.address = address[index[i]]
+                    item.dob = dob[index[i]]
+                    item.dept = dept[index[i]]
+
+                    items.push(item)
+
+                }
+                // document.write(res);
+                console.log(items)
+                loadTableData(items);
+
+                return false;
+            }
+
+            function search_address() {
+                var result = new Array();
+                var res = "";
+                str = document.getElementById("address").value;
+                var items = new Array();
+
+                if (str == "" || str.length == 1) {
+                    alert("Enter your name or address");
+                    document.myform.name.focus();
+                    return false;
+                }
+
+                var re = new RegExp(str, 'gi');
+
+                const tokens = str.split(" ")
+                let num_tokens = tokens.length;
+
+                for (let i = 0; i < num_tokens; i++) {
+                    var re = new RegExp(tokens[i], 'gi');
+                    var temp_index = new Array();
+                    for (let i = 0; i < name.length; i++) {
+                        if ((address[i]).match(re) != null) {
+                            temp_index.push(i);
+                        }
+                    }
+                    result.push(temp_index);
+                }
+
+                index = result.reduce((a, b) => a.filter(c => b.includes(c)));
+
+                for (let i = 0; i < index.length; i++) {
+
+                    // console.log();
+                    // console.log(index[i] + 1)
+                    // console.log(name[index[i]]);
+                    // console.log(address[index[i]]);
+
+                    var item = new Object()
+
+                    item.sr = sr[index[i]]
+                    item.form = form[index[i]]
+                    item.name = name[index[i]]
+                    item.address = address[index[i]]
+                    item.dob = dob[index[i]]
+                    item.dept = dept[index[i]]
+
+                    items.push(item)
+
+                }
+                // document.write(res);
+                console.log(items)
+                loadTableData(items);
+
+                return false;
+            }
+
+            function printDiv() {
+                document.getElementById("everything").style.fontSize = "50%";
+                document.getElementById("myTable").style.textAlign = "left";
+                document.getElementById("myTable").style.padding = "0px";
+                document.getElementById("myTable").style.width = "100%";
+                document.getElementById("myTable").className = "table table-sm table-responsive table-bordered";
+                document.getElementById("head").style.fontSize = "medium";
+                document.getElementById("head").style.padding = "0px";
+                document.getElementById("form1").style.display = "none";
+                document.getElementById("form2").style.display = "none";
+                document.getElementById("foot").style.textAlign = "left";
+                // document.getElementById("names").style.display = "none";
+                // document.getElementById("vote").style.display = "none";
+                // document.getElementById("myTable").createTFoot().insertRow(0).insertCell(0).innerHTML = "Pranav Govekar";
+                document.title = str;
+                window.print();
+                // window.location.reload();
+            }
+        </script>
+</body>
+
+</html>
