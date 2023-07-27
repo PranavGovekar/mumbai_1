@@ -48,7 +48,8 @@
             placeholder="Address" aria-describedby="emailHelp">
     </div>
     <button style="display:block; margin:auto;" type="submit" class="btn btn-primary">Search Address</button>
-    <h1 id="res"></h1>
+    <h4 id="res">
+    </h4>
     <input style="display:block; margin:auto;" class="btn btn-primary" type="button" onclick="printDiv();return false;" value="Save"/>
     </form>
     <br>
@@ -227,12 +228,30 @@
 
                     var item = new Object()
 
-                    item.sr = sr[index[i]]
+                    item.sr = index[i] + 1
                     item.form = form[index[i]]
                     item.name = name[index[i]]
                     item.address = address[index[i]]
                     item.dob = dob[index[i]]
-                    item.dept = dept[index[i]]
+                    if (dept[index[i]] == "s") {
+                        item.dept = "SCIENCE & TECHONOLOGY";
+                    }
+                    else if (dept[index[i]] == "c") {
+                        item.dept = "COMMERCE & MANAGEMENT";
+                    }
+                    else if (dept[index[i]] == "h") {
+                        item.dept = "HUMANITIES";
+                    }
+                    else if (dept[index[i]] == "i") {
+                        item.dept = "INTER-DESCIPLINARI STUDIES";
+                    }
+                    else if (dept[index[i]] == "m") {
+                        item.dept = "MEDICAL";
+                    }
+                    else {
+                        console.log(dept[index[i]])
+                        item.dept = "No";
+                    }
 
                     items.push(item)
 
