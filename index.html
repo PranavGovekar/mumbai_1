@@ -146,45 +146,51 @@
 
                 index = result.reduce((a, b) => a.filter(c => b.includes(c)));
 
-                for (let i = 0; i < index.length; i++) {
+                if (index.length > 0){
+                    for (let i = 0; i < index.length; i++) {
 
-                    // console.log();
-                    // console.log(index[i] + 1)
-                    // console.log(name[index[i]]);
-                    // console.log(address[index[i]]);
+                        // console.log();
+                        // console.log(index[i] + 1)
+                        // console.log(name[index[i]]);
+                        // console.log(address[index[i]]);
 
-                    var item = new Object()
+                        var item = new Object()
 
-                    item.sr = index[i] + 1
-                    item.form = form[index[i]]
-                    item.name = name[index[i]]
-                    item.address = address[index[i]]
-                    item.dob = dob[index[i]]
-                    if (dept[index[i]] == "s"){
-                        item.dept = "SCIENCE & TECHONOLOGY";
-                    } 
-                    else if (dept[index[i]] == "c") {
-                        item.dept = "COMMERCE & MANAGEMENT";
-                    } 
-                    else if (dept[index[i]] == "h") {
-                        item.dept = "HUMANITIES";
-                    } 
-                    else if (dept[index[i]] == "i") {
-                        item.dept = "INTER-DESCIPLINARI STUDIES";
-                    } 
-                    else if (dept[index[i]] == "m") {
-                        item.dept = "MEDICAL";
-                    } 
-                    else {
-                        console.log(dept[index[i]])
-                        item.dept = "No";
+                        item.sr = index[i] + 1
+                        item.form = form[index[i]]
+                        item.name = name[index[i]]
+                        item.address = address[index[i]]
+                        item.dob = dob[index[i]]
+                        if (dept[index[i]] == "s"){
+                            item.dept = "SCIENCE & TECHONOLOGY";
+                        } 
+                        else if (dept[index[i]] == "c") {
+                            item.dept = "COMMERCE & MANAGEMENT";
+                        } 
+                        else if (dept[index[i]] == "h") {
+                            item.dept = "HUMANITIES";
+                        } 
+                        else if (dept[index[i]] == "i") {
+                            item.dept = "INTER-DESCIPLINARI STUDIES";
+                        } 
+                        else if (dept[index[i]] == "m") {
+                            item.dept = "MEDICAL";
+                        } 
+                        else {
+                            console.log(dept[index[i]])
+                            item.dept = "No";
+                        }
+                        items.push(item)
+
                     }
-                    items.push(item)
-
+                    // document.write(res);
+                    console.log(items)
+                    loadTableData(items);
+                
                 }
-                // document.write(res);
-                console.log(items)
-                loadTableData(items);
+                else {
+                       alert("No results found");  
+                }
 
                 return false;
             }
@@ -219,46 +225,51 @@
 
                 index = result.reduce((a, b) => a.filter(c => b.includes(c)));
 
-                for (let i = 0; i < index.length; i++) {
+                if (index.length > 0) {
+                    for (let i = 0; i < index.length; i++) {
 
-                    // console.log();
-                    // console.log(index[i] + 1)
-                    // console.log(name[index[i]]);
-                    // console.log(address[index[i]]);
+                        // console.log();
+                        // console.log(index[i] + 1)
+                        // console.log(name[index[i]]);
+                        // console.log(address[index[i]]);
 
-                    var item = new Object()
+                        var item = new Object()
 
-                    item.sr = index[i] + 1
-                    item.form = form[index[i]]
-                    item.name = name[index[i]]
-                    item.address = address[index[i]]
-                    item.dob = dob[index[i]]
-                    if (dept[index[i]] == "s") {
-                        item.dept = "SCIENCE & TECHONOLOGY";
-                    }
-                    else if (dept[index[i]] == "c") {
-                        item.dept = "COMMERCE & MANAGEMENT";
-                    }
-                    else if (dept[index[i]] == "h") {
-                        item.dept = "HUMANITIES";
-                    }
-                    else if (dept[index[i]] == "i") {
-                        item.dept = "INTER-DESCIPLINARI STUDIES";
-                    }
-                    else if (dept[index[i]] == "m") {
-                        item.dept = "MEDICAL";
-                    }
-                    else {
-                        console.log(dept[index[i]])
-                        item.dept = "No";
-                    }
+                        item.sr = index[i] + 1
+                        item.form = form[index[i]]
+                        item.name = name[index[i]]
+                        item.address = address[index[i]]
+                        item.dob = dob[index[i]]
+                        if (dept[index[i]] == "s") {
+                            item.dept = "SCIENCE & TECHONOLOGY";
+                        }
+                        else if (dept[index[i]] == "c") {
+                            item.dept = "COMMERCE & MANAGEMENT";
+                        }
+                        else if (dept[index[i]] == "h") {
+                            item.dept = "HUMANITIES";
+                        }
+                        else if (dept[index[i]] == "i") {
+                            item.dept = "INTER-DESCIPLINARI STUDIES";
+                        }
+                        else if (dept[index[i]] == "m") {
+                            item.dept = "MEDICAL";
+                        }
+                        else {
+                            console.log(dept[index[i]])
+                            item.dept = "No";
+                        }
+                        items.push(item)
 
-                    items.push(item)
+                    }
+                    // document.write(res);
+                    console.log(items)
+                    loadTableData(items);
 
                 }
-                // document.write(res);
-                console.log(items)
-                loadTableData(items);
+                else {
+                    alert("No results found");
+                }
 
                 return false;
             }
