@@ -108,6 +108,15 @@
                 var Table = document.getElementById("testBody");
                 Table.innerHTML = "";
                 const table = document.getElementById("testBody");
+                if (items.length == 0) {
+                    let row = table.insertRow();
+                    let sr = row.insertCell(0);
+                    sr.innerHTML = "#";
+                    let name = row.insertCell(1);
+                    name.innerHTML = "No results found!";
+                    let polling = row.insertCell(2);
+                    polling.innerHTML = "#";
+                }
                 items.forEach(item => {
                     let row = table.insertRow();
                     let sr = row.insertCell(0);
@@ -157,51 +166,45 @@
 
                 index = result.reduce((a, b) => a.filter(c => b.includes(c)));
 
-                if (index.length > 0){
-                    for (let i = 0; i < index.length; i++) {
+                for (let i = 0; i < index.length; i++) {
 
-                        // console.log();
-                        // console.log(index[i] + 1)
-                        // console.log(name[index[i]]);
-                        // console.log(address[index[i]]);
+                    // console.log();
+                    // console.log(index[i] + 1)
+                    // console.log(name[index[i]]);
+                    // console.log(address[index[i]]);
 
-                        var item = new Object()
+                    var item = new Object()
 
-                        item.sr = index[i] + 1
-                        item.form = form[index[i]]
-                        item.name = name[index[i]]
-                        item.address = address[index[i]]
-                        item.dob = dob[index[i]]
-                        if (dept[index[i]] == "s"){
-                            item.dept = "SCIENCE & TECHONOLOGY";
-                        } 
-                        else if (dept[index[i]] == "c") {
-                            item.dept = "COMMERCE & MANAGEMENT";
-                        } 
-                        else if (dept[index[i]] == "h") {
-                            item.dept = "HUMANITIES";
-                        } 
-                        else if (dept[index[i]] == "i") {
-                            item.dept = "INTER-DESCIPLINARI STUDIES";
-                        } 
-                        else if (dept[index[i]] == "m") {
-                            item.dept = "MEDICAL";
-                        } 
-                        else {
-                            console.log(dept[index[i]])
-                            item.dept = "No";
-                        }
-                        items.push(item)
-
+                    item.sr = index[i] + 1
+                    item.form = form[index[i]]
+                    item.name = name[index[i]]
+                    item.address = address[index[i]]
+                    item.dob = dob[index[i]]
+                    if (dept[index[i]] == "s"){
+                        item.dept = "SCIENCE & TECHONOLOGY";
+                    } 
+                    else if (dept[index[i]] == "c") {
+                        item.dept = "COMMERCE & MANAGEMENT";
+                    } 
+                    else if (dept[index[i]] == "h") {
+                        item.dept = "HUMANITIES";
+                    } 
+                    else if (dept[index[i]] == "i") {
+                        item.dept = "INTER-DESCIPLINARI STUDIES";
+                    } 
+                    else if (dept[index[i]] == "m") {
+                        item.dept = "MEDICAL";
+                    } 
+                    else {
+                        console.log(dept[index[i]])
+                        item.dept = "No";
                     }
-                    // document.write(res);
-                    console.log(items)
-                    loadTableData(items);
-                
+                    items.push(item)
+
                 }
-                else {
-                       alert("No results found");  
-                }
+                // document.write(res);
+                console.log(items)
+                loadTableData(items);
 
                 return false;
             }
@@ -236,51 +239,46 @@
 
                 index = result.reduce((a, b) => a.filter(c => b.includes(c)));
 
-                if (index.length > 0) {
-                    for (let i = 0; i < index.length; i++) {
+                for (let i = 0; i < index.length; i++) {
 
-                        // console.log();
-                        // console.log(index[i] + 1)
-                        // console.log(name[index[i]]);
-                        // console.log(address[index[i]]);
+                    // console.log();
+                    // console.log(index[i] + 1)
+                    // console.log(name[index[i]]);
+                    // console.log(address[index[i]]);
 
-                        var item = new Object()
+                    var item = new Object()
 
-                        item.sr = index[i] + 1
-                        item.form = form[index[i]]
-                        item.name = name[index[i]]
-                        item.address = address[index[i]]
-                        item.dob = dob[index[i]]
-                        if (dept[index[i]] == "s") {
-                            item.dept = "SCIENCE & TECHONOLOGY";
-                        }
-                        else if (dept[index[i]] == "c") {
-                            item.dept = "COMMERCE & MANAGEMENT";
-                        }
-                        else if (dept[index[i]] == "h") {
-                            item.dept = "HUMANITIES";
-                        }
-                        else if (dept[index[i]] == "i") {
-                            item.dept = "INTER-DESCIPLINARI STUDIES";
-                        }
-                        else if (dept[index[i]] == "m") {
-                            item.dept = "MEDICAL";
-                        }
-                        else {
-                            console.log(dept[index[i]])
-                            item.dept = "No";
-                        }
-                        items.push(item)
-
+                    item.sr = index[i] + 1
+                    item.form = form[index[i]]
+                    item.name = name[index[i]]
+                    item.address = address[index[i]]
+                    item.dob = dob[index[i]]
+                    if (dept[index[i]] == "s") {
+                        item.dept = "SCIENCE & TECHONOLOGY";
                     }
-                    // document.write(res);
-                    console.log(items)
-                    loadTableData(items);
+                    else if (dept[index[i]] == "c") {
+                        item.dept = "COMMERCE & MANAGEMENT";
+                    }
+                    else if (dept[index[i]] == "h") {
+                        item.dept = "HUMANITIES";
+                    }
+                    else if (dept[index[i]] == "i") {
+                        item.dept = "INTER-DESCIPLINARI STUDIES";
+                    }
+                    else if (dept[index[i]] == "m") {
+                        item.dept = "MEDICAL";
+                    }
+                    else {
+                        console.log(dept[index[i]])
+                        item.dept = "No";
+                    }
+                    items.push(item)
 
                 }
-                else {
-                    alert("No results found");
-                }
+                // document.write(res);
+                console.log(items)
+                loadTableData(items);
+
 
                 return false;
             }
