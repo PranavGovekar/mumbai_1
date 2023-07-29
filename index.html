@@ -112,10 +112,16 @@
                     let row = table.insertRow();
                     let sr = row.insertCell(0);
                     sr.innerHTML = "#";
-                    let name = row.insertCell(1);
-                    name.innerHTML = "No results found!";
-                    let polling = row.insertCell(2);
-                    polling.innerHTML = "#";
+                    let form = row.insertCell(1);
+                    form.innerHTML = "#";
+                    let name = row.insertCell(2);
+                    name.innerHTML = "No";
+                    let address = row.insertCell(3);
+                    address.innerHTML = "Results";
+                    let dob = row.insertCell(4);
+                    dob.innerHTML = "Found";
+                    let dept = row.insertCell(5);
+                    dept.innerHTML = "#";
                 }
                 items.forEach(item => {
                     let row = table.insertRow();
